@@ -1,0 +1,75 @@
+{
+	"parser": "babel-eslint",
+	"extends": [
+		"standard",
+		"standard-react"
+	],
+	"plugins": [
+		"babel",
+		"react",
+		"promise"
+	],
+	"env": {
+		"browser": false,
+		// browser global variables.
+		"node": true,
+		// Node.js global variables and Node.js-specific rules.
+		"amd": true,
+		// defines require() and define() as global variables as per the amd spec.
+		"mocha": false,
+		// adds all of the Mocha testing global variables.
+		"jasmine": false,
+		// adds all of the Jasmine testing global variables for version 1.3 and 2.0.
+		"phantomjs": false,
+		// phantomjs global variables.
+		"jquery": false,
+		// jquery global variables.
+		"prototypejs": false,
+		// prototypejs global variables.
+		"shelljs": false
+		// shelljs global variables.
+	},
+	"globals": {
+		"__DEV__": false,
+		"__TEST__": false,
+		"__PROD__": false,
+		"__COVERAGE__": false
+	},
+	"rules": {
+		"key-spacing": "off",
+		"jsx-quotes": [
+			"error",
+			"prefer-single"
+		],
+		"max-len": [
+			"error",
+			{
+				"code": 120,
+				"tabWidth": 4
+			}
+		],
+		"object-curly-spacing": [
+			"error",
+			"always"
+		],
+		"comma-dangle": "off",
+		"indent": [
+			"error",
+			"tab"
+		],
+		"semi": [
+			2,
+			"always"
+		],
+		"no-tabs": 0,
+		"react/jsx-indent" : [
+			"error",
+			"tab"
+		],
+		"react/jsx-indent-props" : [
+			"error",
+			"tab"
+		],
+		"react/prop-types": "warn"
+	}
+}
