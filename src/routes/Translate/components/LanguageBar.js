@@ -1,17 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button, ButtonGroup, ButtonToolbar, DropdownButton } from 'react-bootstrap';
-import Translate from '../../../translation';
+import * as localisation from '../../../translation';
 import { LanguagesGrid } from './LanguagesGrid';
 
 export const LanguageBar = ({ firstLanguage, secondLanguage, thirdLanguage }) => (
 	<div>
 		<ButtonToolbar>
 			<ButtonGroup bsSize='small'>
-				<Button>{firstLanguage || <Translate text='english'/>}</Button>
-				<Button>{secondLanguage || <Translate text='french'/>}</Button>
-				<Button>{thirdLanguage || <Translate text='german'/>}</Button>
-				<DropdownButton bsSize='small' title={<Translate text='other_language'/>}>
+				<Button>{firstLanguage || localisation.translate('english')}</Button>
+				<Button>{secondLanguage || localisation.translate('french')}</Button>
+				<Button>{thirdLanguage || localisation.translate('german')}</Button>
+				<DropdownButton id={localisation.translate('other_language')} bsSize='small'
+								title={localisation.translate('other_language')}>
 					<LanguagesGrid recent={[firstLanguage, secondLanguage, thirdLanguage]}/>
 				</DropdownButton>
 			</ButtonGroup>

@@ -1,14 +1,32 @@
 import React from 'react';
 import config from '../../../../project.config';
-import { Button, Col, Row } from 'react-bootstrap';
-import Translate from '../../../translation';
+import { Button } from 'react-bootstrap';
+import * as localisation from '../../../translation';
+import '../styles/LanguageGrid.scss';
 
 export const LanguagesGrid = ({recent}) => {
 	let languages = config.globals.translateLanguages;
-	let gridElements = [];
-	for (let languageKeys of Object.keys(languages)) {
-		gridElements.push(<Button bsSize='xsmall' key={languageKeys}><Translate text={languages[languageKeys]}/></Button>);
-	}
+	let languageKeyComponent = [];
+		Object.keys(languages)
+		.map((key) => languages[key])
+		.forEach((language, index) => {
+			let key = localisation.translate(language);
+			if (recent.indexOf(language) !== -1) {
+				languageKeyComponent[key] =
+					<Button bsSize='xsmall' className='recent' key={language}>
+							{localisation.translate(language)}
+						</Button>;
+			} else {
+				languageKeyComponent[key] =
+					<Button bsSize='xsmall' key={language}>
+						{localisation.translate(language)}
+					</Button>;
+			}
+		});
+	console.log(Object.keys(languageKeyComponent));
+	let gridElements = Object.keys(languageKeyComponent)
+		.sort()
+		.map((key) => languageKeyComponent[key]);
 	return (
 		<div>
 		{gridElements}

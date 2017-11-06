@@ -1,11 +1,9 @@
 import React from 'react';
 import conf from '../../project.config';
 
-export const Translate = ({language, text}) => (
-	<span>
-		{getTranslation(language, text)}
-	</span>
-);
+export function translate(text, language = null) {
+	return getTranslation(language, text);
+}
 
 function getTranslation (language, text) {
 	if (language === 'undefined') {
@@ -31,5 +29,3 @@ function getDefaultTranslation (text) {
 	let defaultStrings = require('./' + defaultLanguage + '/strings.json');
 	return defaultStrings[text];
 }
-
-export default Translate;

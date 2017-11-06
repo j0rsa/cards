@@ -2,26 +2,21 @@
  * Unit tests for translation/index.js
  */
 
-import React from 'react';
-import Translate from '../../src/translation';
-import { shallow } from 'enzyme';
-import ReactAddons from 'react/addons'
-const TestUtils = ReactAddons.addons.TestUtils;
+import * as localisation from '../../src/translation';
 
 /* global describe */
 /* global it */
-describe('Translation', () => {
-	it('renders as a <span>', () => {
-		const component = TestUtils.renderIntoDocument(
-			<Translate/>
-		);
-		shallow(component).should.have.tagName('span');
+/* global expect */
+describe('localisation', () => {
+	it('getEnTranslation', function () {
+		expect(localisation.translate('english', 'en')).to.equal('English');
 	});
 
-	it('getTranslation', function () {
-		const component = TestUtils.renderIntoDocument(
-			<Translate language='en' text='english' />
-		);
-		shallow(component).find('span').should.have.text('English');
+	it('getDefaultTranslation', function () {
+		expect(localisation.translate('english')).to.equal('English');
+	});
+
+	it('getDefaultTranslationIfWrongProvided', function () {
+		expect(localisation.translate('english','123')).to.equal('English');
 	});
 });

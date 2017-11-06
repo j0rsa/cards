@@ -5,7 +5,7 @@ const TEST_BUNDLER = './tests/test-bundler.js';
 
 const karmaConfig = {
 	basePath: '../',
-	browsers: ['PhantomJS'],
+	browsers: ['ChromeHeadless'],
 	singleRun: !argv.watch,
 	coverageReporter: {
 		reporters: [
@@ -21,10 +21,9 @@ const karmaConfig = {
 	frameworks: ['mocha'],
 	reporters: ['mocha'],
 	preprocessors: {
-		[TEST_BUNDLER]: ['webpack'],
-		"**/*.js": ['sourcemap']
+		[TEST_BUNDLER]: ['webpack']
 	},
-	logLevel: 'DEBUG',
+	logLevel: 'WARN',
 	browserConsoleLogOptions: {
 		terminal: true,
 		format: '%b %T: %m',
