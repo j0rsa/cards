@@ -21,7 +21,8 @@ const karmaConfig = {
 	frameworks: ['mocha'],
 	reporters: ['mocha'],
 	preprocessors: {
-		[TEST_BUNDLER]: ['webpack']
+		[TEST_BUNDLER]: ['webpack'],
+		"**/*.js": ['sourcemap']
 	},
 	logLevel: 'DEBUG',
 	browserConsoleLogOptions: {
