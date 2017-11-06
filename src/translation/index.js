@@ -1,9 +1,9 @@
-import config from '../../project.config';
-import * as React from 'react';
+import React from 'react';
+import conf from '../../project.config';
 
-export const Translate = () => (
+export const Translate = ({language, text}) => (
 	<span>
-		{getTranslation(null, this.props.text)}
+		{getTranslation(language, text)}
 	</span>
 );
 
@@ -11,7 +11,7 @@ function getTranslation (language, text) {
 	if (language === 'undefined') {
 		return getDefaultTranslation(text);
 	}
-	let supportedLanguages = config.globals.supportedLanguages;
+	let supportedLanguages = conf.globals.localisation.supportedLanguages;
 	if (supportedLanguages.indexOf(language) !== -1) {
 		//there is translation
 		let strings = require('./' + language + '/strings.json');
@@ -19,6 +19,7 @@ function getTranslation (language, text) {
 		if (!translatedValue) {
 			return getDefaultTranslation(text);
 		}
+		return translatedValue;
 	} else {
 		//there is no translations
 		return getDefaultTranslation(text);
@@ -26,7 +27,8 @@ function getTranslation (language, text) {
 }
 
 function getDefaultTranslation (text) {
-	let defaultStrings = require('./' + config.globals.defaultLanguage + '/strings.json');
+	const defaultLanguage = conf.globals.localisation.defaultLanguage;
+	let defaultStrings = require('./' + defaultLanguage + '/strings.json');
 	return defaultStrings[text];
 }
 

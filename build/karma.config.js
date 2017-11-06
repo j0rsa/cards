@@ -21,9 +21,9 @@ const karmaConfig = {
 	frameworks: ['mocha'],
 	reporters: ['mocha'],
 	preprocessors: {
-		[TEST_BUNDLER]: ['webpack'],
+		[TEST_BUNDLER]: ['webpack']
 	},
-	logLevel: 'WARN',
+	logLevel: 'DEBUG',
 	browserConsoleLogOptions: {
 		terminal: true,
 		format: '%b %T: %m',
