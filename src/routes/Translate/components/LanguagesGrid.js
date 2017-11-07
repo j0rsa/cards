@@ -8,18 +8,18 @@ export const LanguagesGrid = ({recent}) => {
 	let languages = config.globals.translateLanguages;
 	let languageKeyComponent = [];
 		Object.keys(languages)
-		.map((key) => languages[key])
-		.forEach((language, index) => {
-			let key = localisation.translate(language);
+		.forEach((key, index) => {
+			let language = languages[key];
+			let languageLocalized = localisation.translate(language);
 			if (recent.indexOf(language) !== -1) {
-				languageKeyComponent[key] =
-					<Button bsSize='xsmall' className='recent' key={language}>
-							{localisation.translate(language)}
+				languageKeyComponent[languageLocalized] =
+					<Button bsSize='xsmall' className='recent' key={key}>
+							{languageLocalized}
 						</Button>;
 			} else {
-				languageKeyComponent[key] =
-					<Button bsSize='xsmall' key={language}>
-						{localisation.translate(language)}
+				languageKeyComponent[languageLocalized] =
+					<Button bsSize='xsmall' key={key}>
+						{languageLocalized}
 					</Button>;
 			}
 		});
